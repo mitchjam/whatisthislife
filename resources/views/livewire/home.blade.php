@@ -1,10 +1,10 @@
-<style>
-    h1 {
-        margin: 1.5rem;
-    }
-</style>
-
 <div>
+    <style>
+        h1 {
+            margin: 1.5rem;
+        }
+    </style>
+
     @if(auth()->guest())
         <div class="container flex flex-col items-center justify-center space-y-12 m-auto min-h-screen p-4">
             <div class="space-y-1 text-center">
