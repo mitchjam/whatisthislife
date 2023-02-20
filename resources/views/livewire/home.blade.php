@@ -1,3 +1,9 @@
+<style>
+    h1 {
+        margin: 1.5rem;
+    }
+</style>
+
 <div>
     @if(auth()->guest())
         <div class="container flex flex-col items-center justify-center space-y-12 m-auto min-h-screen p-4">
@@ -19,7 +25,7 @@
     @else
         <button wire:click="logout" class="bg-teal-200 text-teal-600 rounded px-4 py-2 m-4">Logout</button>
 
-        <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto">
+        <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12">
             <div>
                 <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
                 <p class="text-sm text-teal-200">- To expand the textarea, drag the symbol at the bottom right.</p>
