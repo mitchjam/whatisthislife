@@ -1,4 +1,4 @@
-<div>
+<div class="p-4">
     <style>
         h1 {
             margin: 1.5rem;
@@ -6,7 +6,7 @@
     </style>
 
     @if(auth()->guest())
-        <div class="container flex flex-col items-center justify-center space-y-12 m-auto min-h-screen p-4">
+        <div class="container flex flex-col items-center justify-center space-y-12 m-auto min-h-screen">
             <div class="space-y-1 text-center">
                 <h1 class="text-4xl text-teal-100">What is this Life?</h1>
                 <h2 class="text-teal-100">What is this, Life?</h2>
@@ -23,9 +23,9 @@
             </div>
         </div>
     @else
-        <button wire:click="logout" class="bg-teal-200 text-teal-600 rounded px-4 py-2 m-4">Logout</button>
+        <button wire:click="logout" class="bg-teal-200 text-teal-600 rounded px-4 py-2">Logout</button>
 
-        <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12">
+        <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12 p-4 lg:p-0">
             <div>
                 <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
             </div>
