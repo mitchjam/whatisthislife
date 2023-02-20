@@ -28,7 +28,6 @@
         <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12">
             <div>
                 <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
-                <p class="text-sm text-teal-200">- To expand the textarea, drag the symbol at the bottom right.</p>
             </div>
 
             <div class="bg-teal-200 rounded-lg p-4">
