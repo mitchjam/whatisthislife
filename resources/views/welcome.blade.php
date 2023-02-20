@@ -8,12 +8,12 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    @livewireStyles
+    <livewire:styles />
 </head>
     <body class="bg-teal-500">
 
         <livewire:home />
 
-        @livewireScripts
+        <livewire:scripts />
     </body>
 </html>
