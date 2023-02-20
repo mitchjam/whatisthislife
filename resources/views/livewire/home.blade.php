@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-2">
     <style>
         h1 {
             margin: 1.5rem;
@@ -25,7 +25,7 @@
     @else
         <button wire:click="logout" class="bg-teal-200 text-teal-600 rounded px-4 py-2">Logout</button>
 
-        <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12 p-4 lg:p-0">
+        <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12">
             <div>
                 <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
             </div>
