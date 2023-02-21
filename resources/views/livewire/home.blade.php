@@ -7,10 +7,12 @@
 
     @if(auth()->guest())
         <div class="container flex flex-col items-center justify-center space-y-12 m-auto min-h-screen">
-            <div class="space-y-1 text-center">
-                <h1 class="text-4xl text-teal-100">What is this Life?</h1>
-                <h2 class="text-teal-100">What is this, Life?</h2>
-                <h3 class="text-teal-100">What, is this Life?</h3>
+            <div class="text-center space-y-1">
+                <p class="text-5xl text-teal-100">What is this Life?</p>
+                <div class="space-x-4">
+                    <span class="text-teal-100">What is this, Life?</span>
+                    <span class="text-teal-100">What, is this Life?</span>
+                </div>
             </div>
 
             <div class="flex flex-col bg-white text-teal-600 rounded-lg shadow space-y-4 p-8">
