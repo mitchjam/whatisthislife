@@ -49,7 +49,7 @@
             </div>
 
             <div x-data="{ show: @entangle('drafts') }" class="space-y-2">
-                <div><span @click="show = ! show" class="bg-teal-300 text-teal-800 rounded-lg cursor-pointer px-4 py-2 hover:bg-teal-200">Draft Messages</span></div>
+                <div><span @click="show = ! show" class="bg-teal-400 text-teal-100 rounded-lg cursor-pointer px-2 py-1 hover:bg-teal-600">Draft Messages</span></div>
 
                 <ul x-show="show" class="bg-white list list-inside rounded-lg divide-y space-y-4 p-6">
                     @foreach($this->draftMessages as $message)
@@ -81,33 +81,34 @@
                 </ul>
             </div>
 
-            <ul class="bg-white list list-inside rounded-lg divide-y space-y-4 p-6">
-                @foreach($this->messages as $message)
-                    <li>
-                        <div class="{{ $loop->first ? '' : 'pt-4' }}">
-                            <div class="flex {{ $message->user->id == 1 ? 'justify-end' : 'justify-start' }} items-start space-x-3">
-                                <div class="flex flex-col w-3/4 {{ $message->user->id == 1 ? 'items-end' : 'items-start' }}">
-                                    <div class="flex items-center text-xs space-x-2">
-                                        <div class="flex items-center">
-                                            @if($message->user->is(auth()->user()))
-                                                <i wire:click="delete({{ $message->id }})" class="material-icons text-gray-400 text-base rounded-lg cursor-pointer px-1 mr-1 hover:bg-gray-200">delete</i>
-                                            @endif
+            <div>
+                <span class="text-white">Published</span>
 
-                                            <span class="font-medium text-gray-500">{{ $message->user->name }}</span>
+                <ul class="bg-white list list-inside rounded-lg divide-y space-y-4 p-6">
+                    @foreach($this->messages as $message)
+                        <li>
+                            <div class="{{ $loop->first ? '' : 'pt-4' }}">
+                                <div class="flex {{ $message->user->id == 1 ? 'justify-end' : 'justify-start' }} items-start space-x-3">
+                                    <div class="flex flex-col w-3/4 {{ $message->user->id == 1 ? 'items-end' : 'items-start' }}">
+                                        <div class="flex items-center text-xs space-x-2">
+                                            <div class="flex items-center">
+                                                @if($message->user->is(auth()->user()))
+                                                    <i wire:click="delete({{ $message->id }})" class="material-icons text-gray-400 text-base rounded-lg cursor-pointer px-1 mr-1 hover:bg-gray-200">delete</i>
+                                                @endif
+                                                <span class="font-medium text-gray-500">{{ $message->user->name }}</span>
+                                            </div>
+                                            <span class="text-gray-500">{{ $message->created_at->format('M j g:ia') }}</span>
                                         </div>
-
-                                        <span class="text-gray-500">{{ $message->created_at->format('M j g:ia') }}</span>
-                                    </div>
-
-                                    <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-700' }}">
-                                        <p>{{ Illuminate\Mail\Markdown::parse($message->message) }}</p>
+                                        <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-700' }}">
+                                            <p>{{ Illuminate\Mail\Markdown::parse($message->message) }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     @endif
 </div>
