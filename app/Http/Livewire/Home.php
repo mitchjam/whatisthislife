@@ -12,6 +12,8 @@ class Home extends Component
 
     public $message = null;
 
+    public $drafts = false;
+
     public function login()
     {
         if ($this->password == 'maggiebattmarch7') {
@@ -28,9 +30,14 @@ class Home extends Component
         auth()->logout();
     }
 
+    public function getDraftMessagesProperty()
+    {
+        return Message::latest()->whereNull('published_at')->get();
+    }
+
     public function getMessagesProperty()
     {
-        return Message::latest()->get();
+        return Message::latest()->whereNotNull('published_at')->get();
     }
 
     public function render()
@@ -49,5 +56,19 @@ class Home extends Component
         ]);
 
         $this->message = '';
+
+        $this->drafts = true;
+    }
+
+    public function publish($id)
+    {
+        auth()->user()->messages()->find($id)->update(['published_at' => now()]);
+
+        $this->drafts = false;
+    }
+
+    public function delete($id)
+    {
+        auth()->user()->messages()->find($id)->delete();
     }
 }
