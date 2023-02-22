@@ -32,7 +32,7 @@ class Home extends Component
 
     public function getDraftMessagesProperty()
     {
-        return Message::latest()->whereNull('published_at')->get();
+        return auth()->user()->messages()->latest()->whereNull('published_at')->get();
     }
 
     public function getMessagesProperty()
