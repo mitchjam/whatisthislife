@@ -45,19 +45,26 @@ class Home extends Component
         return view('livewire.home');
     }
 
-    public function saveMessage()
+    public function saveDraftMessage()
     {
         $this->validate([
             'message' => 'required',
         ]);
 
-        auth()->user()->messages()->create([
+        $message = auth()->user()->messages()->create([
             'message' => $this->message,
         ]);
 
         $this->message = '';
 
         $this->drafts = true;
+
+        return $message;
+    }
+
+    public function savePublishedMessage()
+    {
+        $this->publish($this->saveDraftMessage()->id);
     }
 
     public function publish($id)

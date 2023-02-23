@@ -40,11 +40,11 @@
                 ></textarea>
 
                 <div class="flex flex-wrap grid grid-cols-2 gap-2">
-                    <span wire:click="saveMessage()"
+                    <span wire:click="saveDraftMessage()"
                         class="bg-teal-300 text-teal-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-teal-400"
                     >Save Draft</span>
 
-                    <span wire:click="saveMessage()"
+                    <span wire:click="savePublishedMessage()"
                         class="bg-green-400 text-green-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-green-500"
                     >Publish</span>
                 </div>
