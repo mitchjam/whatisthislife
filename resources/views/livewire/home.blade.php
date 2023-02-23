@@ -29,25 +29,32 @@
 
         <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12">
             <div>
-                <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
-            </div>
+                <span class="text-white">Published</span>
 
-            <div class="bg-teal-200 rounded-lg p-4">
-                <textarea wire:model="message" tabindex="1"
-                    placeholder="Write your message here..."
-                    class="p-2 bg-transparent placeholder-teal-500 text-teal-800 border-none shadow-none outline-none w-full"
-                    rows="10"
-                ></textarea>
-
-                <div class="flex flex-wrap grid grid-cols-2 gap-2">
-                    <span wire:click="saveDraftMessage()"
-                        class="bg-teal-300 text-teal-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-teal-400"
-                    >Save Draft</span>
-
-                    <span wire:click="savePublishedMessage()"
-                        class="bg-green-400 text-green-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-green-500"
-                    >Publish</span>
-                </div>
+                <ul id="messages" class="bg-white list list-inside rounded-lg overflow-scroll space-y-4 p-6" style="max-height: 1000px;">
+                    @foreach($this->messages as $message)
+                        <li>
+                            <div class="{{ $loop->first ? '' : 'pt-4' }}">
+                                <div class="flex {{ $message->user->id == 1 ? 'justify-end' : 'justify-start' }} items-start space-x-3">
+                                    <div class="flex flex-col w-3/4 {{ $message->user->id == 1 ? 'items-end' : 'items-start' }}">
+                                        <div class="flex items-center text-xs space-x-2">
+                                            <div class="flex items-center">
+                                                @if($message->user->is(auth()->user()))
+                                                    <i wire:click="delete({{ $message->id }})" class="material-icons text-gray-400 text-base rounded-lg cursor-pointer px-1 mr-1 hover:bg-gray-200">delete</i>
+                                                @endif
+                                                <span class="font-medium text-gray-500">{{ $message->user->name }}</span>
+                                            </div>
+                                            <span class="text-gray-500">{{ $message->created_at->format('M j g:ia') }}</span>
+                                        </div>
+                                        <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-800' }} bg-gray-100 rounded-lg p-4">
+                                            <p>{{ Illuminate\Mail\Markdown::parse($message->message) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
 
             <div x-data="{ show: @entangle('drafts') }" class="space-y-2">
@@ -84,32 +91,25 @@
             </div>
 
             <div>
-                <span class="text-white">Published</span>
+                <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
+            </div>
 
-                <ul id="messages" class="bg-white list list-inside rounded-lg overflow-scroll space-y-4 p-6" style="max-height: 1000px;">
-                    @foreach($this->messages as $message)
-                        <li>
-                            <div class="{{ $loop->first ? '' : 'pt-4' }}">
-                                <div class="flex {{ $message->user->id == 1 ? 'justify-end' : 'justify-start' }} items-start space-x-3">
-                                    <div class="flex flex-col w-3/4 {{ $message->user->id == 1 ? 'items-end' : 'items-start' }}">
-                                        <div class="flex items-center text-xs space-x-2">
-                                            <div class="flex items-center">
-                                                @if($message->user->is(auth()->user()))
-                                                    <i wire:click="delete({{ $message->id }})" class="material-icons text-gray-400 text-base rounded-lg cursor-pointer px-1 mr-1 hover:bg-gray-200">delete</i>
-                                                @endif
-                                                <span class="font-medium text-gray-500">{{ $message->user->name }}</span>
-                                            </div>
-                                            <span class="text-gray-500">{{ $message->created_at->format('M j g:ia') }}</span>
-                                        </div>
-                                        <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-800' }} bg-gray-100 rounded-lg p-4">
-                                            <p>{{ Illuminate\Mail\Markdown::parse($message->message) }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+            <div class="bg-teal-200 rounded-lg p-4">
+                <textarea wire:model="message" tabindex="1"
+                    placeholder="Write your message here..."
+                    class="p-2 bg-transparent placeholder-teal-500 text-teal-800 border-none shadow-none outline-none w-full"
+                    rows="10"
+                ></textarea>
+
+                <div class="flex flex-wrap grid grid-cols-2 gap-2">
+                    <span wire:click="saveDraftMessage()"
+                        class="bg-teal-300 text-teal-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-teal-400"
+                    >Save Draft</span>
+
+                    <span wire:click="savePublishedMessage()"
+                        class="bg-green-400 text-green-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-green-500"
+                    >Publish</span>
+                </div>
             </div>
         </div>
     @endif
