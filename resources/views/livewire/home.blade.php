@@ -72,7 +72,7 @@
                                             </div>
                                             <span class="text-gray-500">{{ $message->created_at->format('M j g:ia') }}</span>
                                         </div>
-                                        <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-700' }} bg-gray-100 rounded-lg p-4">
+                                        <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-700' }}">
                                             <p>{{ Illuminate\Mail\Markdown::parse($message->message) }}</p>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                             </div>
                                             <span class="text-gray-500">{{ $message->created_at->format('M j g:ia') }}</span>
                                         </div>
-                                        <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-700' }}">
+                                        <div class="{{ $message->user->id == 1 ? 'text-teal-700' : 'text-purple-700' }} bg-gray-100 rounded-lg p-4">
                                             <p>{{ Illuminate\Mail\Markdown::parse($message->message) }}</p>
                                         </div>
                                     </div>
