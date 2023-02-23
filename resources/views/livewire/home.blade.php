@@ -51,7 +51,7 @@
             </div>
 
             <div x-data="{ show: @entangle('drafts') }" class="space-y-2">
-                <div><span @click="show = ! show" class="bg-teal-600 text-teal-100 rounded-lg cursor-pointer px-2 py-1 hover:bg-teal-400">Draft Messages</span></div>
+                <div><span @click="show = ! show" class="bg-teal-600 text-teal-100 rounded-lg cursor-pointer px-2 py-1 hover:bg-teal-400">Draft Messages ({{ count($this->draftMessages) }})</span></div>
 
                 <ul x-show="show" class="bg-white list list-inside rounded-lg divide-y space-y-4 p-6">
                     @foreach($this->draftMessages as $message)
