@@ -29,9 +29,7 @@
 
         <div style="max-width: 800px;" class="container flex flex-col space-y-4 w-full mt-16 m-auto pb-12">
             <div>
-                <span class="text-white">Published</span>
-
-                <ul id="messages" class="bg-white list list-inside rounded-lg overflow-scroll space-y-4 p-6" style="max-height: 1000px;">
+                <ul id="messages" class="bg-white list list-inside rounded-lg overflow-y-scroll space-y-4 p-6" style="max-height: 1000px;">
                     @foreach($this->messages as $message)
                         <li>
                             <div class="{{ $loop->first ? '' : 'pt-4' }}">
@@ -55,6 +53,28 @@
                         </li>
                     @endforeach
                 </ul>
+            </div>
+
+            <div>
+                <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
+            </div>
+
+            <div class="bg-teal-200 rounded-lg p-4">
+                <textarea wire:model="message" tabindex="1"
+                    placeholder="Write your message here..."
+                    class="p-2 bg-transparent placeholder-teal-500 text-teal-800 border-none shadow-none outline-none w-full"
+                    rows="10"
+                ></textarea>
+
+                <div class="flex flex-wrap grid grid-cols-2 gap-2">
+                    <span wire:click="saveDraftMessage()"
+                        class="bg-teal-300 text-teal-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-teal-400"
+                    >Save Draft</span>
+
+                    <span wire:click="savePublishedMessage()"
+                        class="bg-green-400 text-green-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-green-500"
+                    >Publish</span>
+                </div>
             </div>
 
             <div x-data="{ show: @entangle('drafts') }" class="space-y-2">
@@ -88,28 +108,6 @@
                         </li>
                     @endforeach
                 </ul>
-            </div>
-
-            <div>
-                <p class="text-sm text-teal-200">- To add a line break, simply put a "#" in a line.</p>
-            </div>
-
-            <div class="bg-teal-200 rounded-lg p-4">
-                <textarea wire:model="message" tabindex="1"
-                    placeholder="Write your message here..."
-                    class="p-2 bg-transparent placeholder-teal-500 text-teal-800 border-none shadow-none outline-none w-full"
-                    rows="10"
-                ></textarea>
-
-                <div class="flex flex-wrap grid grid-cols-2 gap-2">
-                    <span wire:click="saveDraftMessage()"
-                        class="bg-teal-300 text-teal-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-teal-400"
-                    >Save Draft</span>
-
-                    <span wire:click="savePublishedMessage()"
-                        class="bg-green-400 text-green-800 text-center rounded cursor-pointer px-4 py-2 w-full hover:bg-green-500"
-                    >Publish</span>
-                </div>
             </div>
         </div>
     @endif
