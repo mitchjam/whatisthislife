@@ -37,7 +37,7 @@ class Home extends Component
 
     public function getMessagesProperty()
     {
-        return Message::latest()->whereNotNull('published_at')->get();
+        return Message::oldest()->whereNotNull('published_at')->get();
     }
 
     public function render()

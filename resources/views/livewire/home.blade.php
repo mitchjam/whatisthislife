@@ -86,7 +86,7 @@
             <div>
                 <span class="text-white">Published</span>
 
-                <ul class="bg-white list list-inside rounded-lg divide-y space-y-4 p-6">
+                <ul id="messages" class="bg-white list list-inside rounded-lg divide-y overflow-scroll space-y-4 p-6" style="max-height: 1000px;">
                     @foreach($this->messages as $message)
                         <li>
                             <div class="{{ $loop->first ? '' : 'pt-4' }}">
@@ -113,4 +113,11 @@
             </div>
         </div>
     @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var messages = document.getElementById("messages");
+            messages.scrollTop = objDiv.scrollHeight;
+        });
+    </script>
 </div>
