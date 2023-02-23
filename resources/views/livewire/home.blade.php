@@ -86,7 +86,7 @@
             <div>
                 <span class="text-white">Published</span>
 
-                <ul id="messages" class="bg-white list list-inside rounded-lg divide-y overflow-scroll space-y-4 p-6" style="max-height: 1000px;">
+                <ul id="messages" class="bg-white list list-inside rounded-lg overflow-scroll space-y-4 p-6" style="max-height: 1000px;">
                     @foreach($this->messages as $message)
                         <li>
                             <div class="{{ $loop->first ? '' : 'pt-4' }}">
