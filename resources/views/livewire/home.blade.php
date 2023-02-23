@@ -117,7 +117,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             var messages = document.getElementById("messages");
-            messages.scrollTop = objDiv.scrollHeight;
+            messages.scrollTop = messages.scrollHeight;
         });
     </script>
 </div>
