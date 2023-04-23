@@ -18,7 +18,7 @@ class Home extends Component
     {
         if ($this->password == 'maggiebattmarch7') {
             auth()->login(User::find(2));
-        } elseif ($this->password == 'mitchjam1928march7') {
+        } elseif ($this->password == 'mitchjam1928always') {
             auth()->login(User::find(1));
         } else {
             $this->addError('login', 'Wrong password');
