@@ -8,7 +8,7 @@
     @if(auth()->guest())
         <div class="container flex flex-col items-center justify-center space-y-12 m-auto min-h-screen">
             <div class="text-center space-y-1">
-                <p class="text-5xl text-teal-100">Maggie...</p>
+                <p class="text-5xl text-teal-100">...</p>
             </div>
         </div>
     @else
