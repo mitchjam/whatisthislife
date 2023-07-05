@@ -8,20 +8,7 @@
     @if(auth()->guest())
         <div class="container flex flex-col items-center justify-center space-y-12 m-auto min-h-screen">
             <div class="text-center space-y-1">
-                <p class="text-5xl text-teal-100">What is this Life?</p>
-                <div class="space-x-4">
-                    <span class="text-teal-100">What is this, Life?</span>
-                    <span class="text-teal-100">What, is this Life?</span>
-                </div>
-            </div>
-
-            <div class="flex flex-col bg-white text-teal-600 rounded-lg shadow space-y-4 p-8">
-                <p>If this is Maggie, you'll know the secret password :)</p>
-
-                <input wire:keydown.enter="login()" wire:model="password" type="password" class="border rounded p-2">
-
-                <button wire:click="login" class="bg-teal-500 text-white rounded-lg shadow px-4 py-2">Login</button>
-                @error('login') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
+                <p class="text-5xl text-teal-100">Maggie...</p>
             </div>
         </div>
     @else
